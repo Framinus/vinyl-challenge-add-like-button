@@ -73,6 +73,13 @@ Each requirement is assigned a point value. A fully complete requirement will ea
 
 **Actions I need to take to implement these specs:**
 
+- Ensure authentication flow works
+  -
+- Update schema
+
+
+
+
 - [x] Schema representation of 'likes'
 - [ ] Database queries to interact with likes
   - [ ] query to see if liked

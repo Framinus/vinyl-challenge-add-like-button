@@ -11,10 +11,18 @@ routes.use('/', authentication)
 routes.use('/users', users)
 routes.use('/albums', albums)
 
+
 routes.post('/api/likes/:albumId', (req, res, next) => {
   const { albumId } = req.params
+  const userId  = req.session.userId
   // TODO: finish this call to addLike, and the .then handlers
-  addLike()
+  addLike(userId, albumId)
+  .then(like => {
+    countLike(albumId)
+    .then(totalLikes => {
+      res.json({totalLikes})
+    })
+  })
 })
 
 // TODO: write the route that handles getLikes

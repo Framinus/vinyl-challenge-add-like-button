@@ -5,10 +5,11 @@ export default function signIn(email, password) {
     .then((results) => {
       let decision
       if (results[0]) {
-        decision = results[0].password === password
-      } else {
-        decision = false
+        if (results[0].password === password) {
+          return results
+        }
+        return false
       }
-      return decision
+      return false
     })
 }

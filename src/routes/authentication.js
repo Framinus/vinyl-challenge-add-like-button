@@ -1,4 +1,5 @@
 import express from 'express'
+import session from 'express-session'
 
 import {
   checkEmailIsUsed,
@@ -11,6 +12,7 @@ const router = express.Router()
 router.get('/sign-up', (req, res) => {
   res.render('authentication/sign-up', {error:null})
 })
+
 router.post('/sign-up', (req, res) => {
   const {name, password} = req.body
   const email = req.body.email.toLowerCase()
@@ -32,12 +34,14 @@ router.post('/sign-up', (req, res) => {
 router.get('/sign-in', (req, res) => {
   res.render('authentication/sign-in', {error: null})
 })
+
 router.post('/sign-in', (req, res) => {
   const {email, password} = req.body
   signIn(email, password)
-    .then((valid) => {
-      if (valid) {
-        res.redirect('/')
+    .then((user) => {
+      if (user) {
+        req.session.userId = user[0].id
+        res.redirect('/', {user: req.session.userId})
       } else {
         res.render('authentication/sign-in', {error: 'Incorrect username or password'})
       }

@@ -1,5 +1,6 @@
 drop table if exists albums CASCADE;
 drop table if exists users CASCADE;
+drop table if exists AlbumLikes CASCADE;
 
 
 CREATE TABLE albums (
