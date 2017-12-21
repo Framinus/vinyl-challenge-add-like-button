@@ -14,7 +14,7 @@ routes.use('/albums', albums)
 
 routes.post('/api/likes/:albumId', (req, res, next) => {
   const { albumId } = req.params
-  const userId  = req.session.userId
+  const userId  = req.session.user.id
   // TODO: finish this call to addLike, and the .then handlers
   addLike(userId, albumId)
   .then(like => {
@@ -26,6 +26,4 @@ routes.post('/api/likes/:albumId', (req, res, next) => {
 })
 
 // TODO: write the route that handles getLikes
-
-
 export default routes

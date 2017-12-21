@@ -4,6 +4,7 @@ import {
   getAlbums,
   getAlbumById,
   addLike,
+  countLike
 } from '../actions'
 
 const router = express.Router()
@@ -16,12 +17,17 @@ router.get('/', (req, res, next) => {
 
 router.get('/:albumID', (req, res, next) => {
   getAlbumById(req.params.albumID)
-    .then(album => res.render('albums/album', {album}))
-    .catch(next)
+    .then(album => {
+      //Get likes for this album
+      countLike(req.params.albumId)
+        .then(likes => {
+          res.render('albums/album', {album, likes: likes.length})
+        })
+    })
 })
 
 router.post('/:albumID', (req, res, next) => {
-  
+
 })
 
 

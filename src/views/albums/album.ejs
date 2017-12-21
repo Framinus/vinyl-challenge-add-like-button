@@ -3,4 +3,10 @@
 <h1><%= album.title %></h1>
 <em>by <%= album.artist %></em>
 
+<div id="like-amount">
+  Likes: <%= likes %>
+  <button id="likebtn" type="submit">Like this Album</button>
+</div>
+
+
 <% include ../partials/footer %>

@@ -21,10 +21,19 @@ export function start() { // eslint-disable-line import/prefer-default-export
     secret: 'keyboard cat',
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true }
+    // cookie: { secure: true }
   }))
 
+  app.use((req, res, next) => {
+    console.log("Session::", req.session)
+    next()
+  })
+
   app.use(routes)
+
+  app.get('/info', (req, res) => {
+    res.json({session: req.session})
+  })
 
   app.use((req, res) => {
     res.status(404).render('common/not_found')

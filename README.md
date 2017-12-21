@@ -73,10 +73,24 @@ Each requirement is assigned a point value. A fully complete requirement will ea
 
 **Actions I need to take to implement these specs:**
 
-- Ensure authentication flow works
-  -
-- Update schema
+2017-12-21 coders:
+jedai
+reluctant hannah
 
+
+- [x] Update schema with way to represent likes
+  - many-many means join table between users and albums_id
+- [x] Write db query to get total number of likes per album
+- [x] Ensure auth flow is working and user is being set on session
+- [x] Create routes
+  - [x] POST /api/likes/:albumId  - this handles adding a like to an album by a particular user
+- [ ] Update the route for individual album page so it sends the number of likes
+  - [ ] Send along whether the user has already liked the album
+- [ ] VIEW:
+  - [ ] Add a like button
+  - [x] Add a like count
+  - [ ] Add some client-side JS to post to the api when Like is clicked, add red border, and to increment the counter
+  - [ ] If user has already liked album, render red border
 
 
 
