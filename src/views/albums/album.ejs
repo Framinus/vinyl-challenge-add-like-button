@@ -3,9 +3,9 @@
 <h1><%= album.title %></h1>
 <em>by <%= album.artist %></em>
 
-<div id="like-amount">
-  Likes: <%= likes %>
-  <button id="likebtn" type="submit">Like this Album</button>
+<div id="like-amount" data-album="<%= album.id %>">
+  Likes: <span id="like-counter"><%= likeCount %></span>
+  <button id="like-btn" type="button">Like this Album</button>
 </div>
 
 
