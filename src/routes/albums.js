@@ -3,8 +3,7 @@ import express from 'express'
 import {
   getAlbums,
   getAlbumById,
-  addLike,
-  countLike
+  countLike,
 } from '../actions'
 
 const router = express.Router()
@@ -17,11 +16,12 @@ router.get('/', (req, res, next) => {
 
 router.get('/:albumID', (req, res, next) => {
   getAlbumById(req.params.albumID)
-    .then(album => {
-      //Get likes for this album
+    .then((album) => {
+      // Get likes for this album
       countLike(req.params.albumId)
-        .then(likes => {
-          res.render('albums/album', {album, likes: likes.length})
+        .then((likes) => {
+          const likeCount = likes.length
+          res.render('albums/album', {album, likeCount})
         })
     })
 })
